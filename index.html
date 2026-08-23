@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FC Brothers - EA FC Squad Builder</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <h1>⚽ FC Brothers</h1>
+                <p>EA FC Squad Builder & Team Rating Calculator</p>
+            </div>
+            <nav class="nav">
+                <button class="btn btn-primary" id="saveBtn">💾 Save Squad</button>
+                <button class="btn btn-secondary" id="shareBtn">📤 Share Team</button>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Left Sidebar - Formation & Settings -->
+            <aside class="sidebar">
+                <div class="card">
+                    <h2>Formation</h2>
+                    <select id="formationSelect" class="form-control">
+                        <option value="">Select Formation...</option>
+                        <option value="4-3-3">4-3-3</option>
+                        <option value="4-2-3-1">4-2-3-1</option>
+                        <option value="3-4-3">3-4-3</option>
+                        <option value="5-3-2">5-3-2</option>
+                        <option value="3-5-2">3-5-2</option>
+                        <option value="4-4-2">4-4-2</option>
+                    </select>
+                </div>
+
+                <div class="card">
+                    <h2>Search Players</h2>
+                    <input type="text" id="playerSearch" class="form-control" placeholder="Search by name...">
+                    <select id="positionFilter" class="form-control">
+                        <option value="">All Positions</option>
+                        <option value="GK">Goalkeeper (GK)</option>
+                        <option value="CB">Center Back (CB)</option>
+                        <option value="LB">Left Back (LB)</option>
+                        <option value="RB">Right Back (RB)</option>
+                        <option value="CM">Center Mid (CM)</option>
+                        <option value="LM">Left Mid (LM)</option>
+                        <option value="RM">Right Mid (RM)</option>
+                        <option value="ST">Striker (ST)</option>
+                        <option value="CF">Center Forward (CF)</option>
+                    </select>
+                    <input type="number" id="ovrFilter" class="form-control" placeholder="Min OVR" min="1" max="99">
+                    <div id="playerList" class="player-list"></div>
+                </div>
+            </aside>
+
+            <!-- Center - Pitch/Formation Display -->
+            <section class="pitch-section">
+                <div class="card pitch">
+                    <h2>Your Squad</h2>
+                    <div class="field">
+                        <div class="formation-display" id="formationDisplay">
+                            <p>Select a formation to start building your squad</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Sidebar - Team Stats -->
+            <aside class="stats-sidebar">
+                <div class="card stats-card">
+                    <h2>Team Statistics</h2>
+                    <div class="stat-item">
+                        <span class="stat-label">Team OVR:</span>
+                        <span class="stat-value" id="teamOVR">--</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Squad Depth:</span>
+                        <span class="stat-value" id="squadDepth">0/11</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Chemistry:</span>
+                        <span class="stat-value" id="chemistry">--</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Rank Boost:</span>
+                        <span class="stat-value" id="rankBoost">--</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>Squad Summary</h2>
+                    <div id="squadSummary" class="squad-summary"></div>
+                </div>
+
+                <div class="card">
+                    <h2>Actions</h2>
+                    <button class="btn btn-danger btn-full" id="clearBtn">🗑️ Clear Squad</button>
+                    <button class="btn btn-secondary btn-full" id="randomBtn">🎲 Random Squad</button>
+                </div>
+            </aside>
+        </main>
+    </div>
+
+    <!-- Modal for Player Selection -->
+    <div id="playerModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Select Player</h2>
+            <div id="modalPlayerList" class="modal-player-list"></div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toast" class="toast"></div>
+
+    <script src="scripts/app.js"></script>
+</body>
+</html>
